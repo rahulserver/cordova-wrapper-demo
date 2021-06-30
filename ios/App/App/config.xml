@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <access origin="*" />
+  
+  <feature name="ActionSheet">
+    <param name="ios-package" value="ActionSheet"/>
+  </feature>
+
+  <feature name="Device">
+    <param name="ios-package" value="CDVDevice"/>
+  </feature>
+
+  <feature name="TwilioVoicePlugin">
+    <param name="ios-package" value="TwilioVoicePlugin"/>
+  </feature>
+
+  
+  <preference name="INCOMING_CALL_APP_NAME" value="foo" />
+</widget>
