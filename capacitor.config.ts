@@ -15,8 +15,7 @@ const config: CapacitorConfig = {
       smallIcon: "splash",
       iconColor: "#488AFF",
       sound: "beep.wav",
-    },
-    "cordova-plugin-twiliovoicesdk": {}
+    }
   },
 };
 

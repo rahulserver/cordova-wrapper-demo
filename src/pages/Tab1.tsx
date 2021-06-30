@@ -24,16 +24,20 @@ const Tab1: React.FC = () => {
         // const resp = await axios.get(TOKEN_URL);
         // console.log("resp.data",resp.data);
         // setToken(resp.data);
+        alert("Starting to load");
+        console.log(".laod");
         await CordovaPluginTwilioVoiceSdk.load();
+        alert("loaded");
         // @ts-ignore
         Twilio = window.Twilio;
         if(!Twilio) {
           alert("No twilio");
           throw new Error("Twilio plugin load failure");
         }
-        Twilio.TwilioVoiceClient.initialize("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzA0NmUyZmUyOGJhNzEzNGY1ZjIwNWRlMjE4MjczMWJhLTE2MjQ4ODY0ODEiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJtYWsiLCJ2b2ljZSI6eyJpbmNvbWluZyI6eyJhbGxvdyI6dHJ1ZX0sIm91dGdvaW5nIjp7ImFwcGxpY2F0aW9uX3NpZCI6IkFQNjY2MGVkNWJkMDgwNGVlMzkyYjMxZjQzNmM2MzUxMzQifSwicHVzaF9jcmVkZW50aWFsX3NpZCI6IkNSOWFiMDdjMGQ4YTA1ZTcwN2M0ZDM1MWEwZTNhYWQ2MGYifX0sImlhdCI6MTYyNDg4NjQ4MSwiZXhwIjoxNjI0ODkwMDgxLCJpc3MiOiJTSzA0NmUyZmUyOGJhNzEzNGY1ZjIwNWRlMjE4MjczMWJhIiwic3ViIjoiQUNhOTNlNzc3YWRlMGQxY2YzZjhkOWIxY2ExOTQ0NTU5NyJ9.EBLo1NiPYA20iqJuvAYKcq6XrPbUnLQfangueR63MrE");
+        Twilio.TwilioVoiceClient.initialize("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzA0NmUyZmUyOGJhNzEzNGY1ZjIwNWRlMjE4MjczMWJhLTE2MjUwNDU3OTUiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJ0ZXN0ZW11bGF0b3IiLCJ2b2ljZSI6eyJpbmNvbWluZyI6eyJhbGxvdyI6dHJ1ZX0sIm91dGdvaW5nIjp7ImFwcGxpY2F0aW9uX3NpZCI6IkFQZmQ1OGJiYzc4NTVlNDQyNDI4NjViMjQ3YmU2NGU5MDYifSwicHVzaF9jcmVkZW50aWFsX3NpZCI6IkNSNjUxNTYzMTQ4ZWEzZTcyMjliNzIzOGY3Y2I4YmMyZDcifX0sImlhdCI6MTYyNTA0NTc5NSwiZXhwIjoxNjI1MDQ5Mzk1LCJpc3MiOiJTSzA0NmUyZmUyOGJhNzEzNGY1ZjIwNWRlMjE4MjczMWJhIiwic3ViIjoiQUNhOTNlNzc3YWRlMGQxY2YzZjhkOWIxY2ExOTQ0NTU5NyJ9.SPB8Xr1N4rn-xdhwk16LZr_FicB5F910qLNCkT2YzKs");
 
         Twilio.TwilioVoiceClient.clientinitialized(function() {
+          console.log("init success!");
           alert("Ready to start call")
           //$('#statusMessage').text('Ready to start call');
         });

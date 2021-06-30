@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "587250322460",
+    "project_id": "twilio-test-f349a",
+    "storage_bucket": "twilio-test-f349a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587250322460:android:2b4c372cdfd4ade03723d9",
+        "android_client_info": {
+          "package_name": "com.rahulserver.cordovademo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587250322460-na3dci17dbdcgf02ceh08d5ln6v2qb1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwOBKUUgnVHqmoL1BPzyci6futuZL04Bw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587250322460-na3dci17dbdcgf02ceh08d5ln6v2qb1j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "587250322460-oj8hdo1rf20t6km6lska36ffpemcur9b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rahulserver.cordovademo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
