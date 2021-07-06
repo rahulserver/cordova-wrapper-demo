@@ -50,5 +50,20 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>voip</string>
+        <string>audio</string>
+    </array>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>The app uses the microphone for voice calls</string>
+    <key>TVPEnableCallKit</key>
+    <string>true</string>
+    <key>TVPIncomingCallAppName</key>
+    <string>Incoming</string>
+    <key>TVPMaskIncomingPhoneNumber</key>
+    <string>false</string>
+    <key>TVPEnableDebugging</key>
+    <string>true</string>
 </dict>
 </plist>

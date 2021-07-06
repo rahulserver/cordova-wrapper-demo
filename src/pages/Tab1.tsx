@@ -8,8 +8,10 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Platform } from "@ionic/angular";
 let Twilio:any;
 const TOKEN_URL = "https://quickstart-ios-server-7675-dev.twil.io/access-token?identity=test";
+// APP_SID=APfd58bbc7855e44242865b247be64e906
+// PUSH_CREDENTIAL_SID=CR80b251e4ced8361207633558e40852ab
 const Tab1: React.FC = () => {
-  const [token, setToken] = useState(null);
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzA0NmUyZmUyOGJhNzEzNGY1ZjIwNWRlMjE4MjczMWJhLTE2MjU1NjYyNjAiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJhbmV3aW9zIiwidm9pY2UiOnsiaW5jb21pbmciOnsiYWxsb3ciOnRydWV9LCJvdXRnb2luZyI6eyJhcHBsaWNhdGlvbl9zaWQiOiJBUDRjMTJlMGIzMmM1ZmY5MjQxMWQzOTRiMzJhZWNjYTg5In19fSwiaWF0IjoxNjI1NTY2MjYwLCJleHAiOjE2MjU1Njk4NjAsImlzcyI6IlNLMDQ2ZTJmZTI4YmE3MTM0ZjVmMjA1ZGUyMTgyNzMxYmEiLCJzdWIiOiJBQ2E5M2U3NzdhZGUwZDFjZjNmOGQ5YjFjYTE5NDQ1NTk3In0.EwUElUJrvgBVJpwdx8DgplGC4Z8qrgbzxIX-njqJYAI";
   const [target, setTarget] = useState('');
   useEffect(()=> {
     async function doStuffAfterTwilioPluginLoaded() {
@@ -26,7 +28,8 @@ const Tab1: React.FC = () => {
         // setToken(resp.data);
         alert("Starting to load");
         console.log(".laod");
-        await CordovaPluginTwilioVoiceSdk.load();
+        let cordovaTwilioSDkObject = CordovaPluginTwilioVoiceSdk.create();
+        cordovaTwilioSDkObject.load();
         alert("loaded");
         // @ts-ignore
         Twilio = window.Twilio;
@@ -34,7 +37,7 @@ const Tab1: React.FC = () => {
           alert("No twilio");
           throw new Error("Twilio plugin load failure");
         }
-        Twilio.TwilioVoiceClient.initialize("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzA0NmUyZmUyOGJhNzEzNGY1ZjIwNWRlMjE4MjczMWJhLTE2MjUwNDU3OTUiLCJncmFudHMiOnsiaWRlbnRpdHkiOiJ0ZXN0ZW11bGF0b3IiLCJ2b2ljZSI6eyJpbmNvbWluZyI6eyJhbGxvdyI6dHJ1ZX0sIm91dGdvaW5nIjp7ImFwcGxpY2F0aW9uX3NpZCI6IkFQZmQ1OGJiYzc4NTVlNDQyNDI4NjViMjQ3YmU2NGU5MDYifSwicHVzaF9jcmVkZW50aWFsX3NpZCI6IkNSNjUxNTYzMTQ4ZWEzZTcyMjliNzIzOGY3Y2I4YmMyZDcifX0sImlhdCI6MTYyNTA0NTc5NSwiZXhwIjoxNjI1MDQ5Mzk1LCJpc3MiOiJTSzA0NmUyZmUyOGJhNzEzNGY1ZjIwNWRlMjE4MjczMWJhIiwic3ViIjoiQUNhOTNlNzc3YWRlMGQxY2YzZjhkOWIxY2ExOTQ0NTU5NyJ9.SPB8Xr1N4rn-xdhwk16LZr_FicB5F910qLNCkT2YzKs");
+        Twilio.TwilioVoiceClient.initialize(token);
 
         Twilio.TwilioVoiceClient.clientinitialized(function() {
           console.log("init success!");
@@ -46,6 +49,7 @@ const Tab1: React.FC = () => {
         // Accept or reject a call - only needed on Android - iOS uses CallKit
 
         Twilio.TwilioVoiceClient.callinvitereceived(function(call:any) {
+          alert("incoming");
           LocalNotifications.schedule({
             notifications: [
               {
@@ -90,9 +94,10 @@ const Tab1: React.FC = () => {
   }, []);
 
   function onClick() {
-    console.log("onClick");
+    alert("onClick "+target);
     Twilio.TwilioVoiceClient.call(token, target);
   }
+
   return (
     <IonPage>
       <IonHeader>
@@ -107,7 +112,7 @@ const Tab1: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <ExploreContainer name="Tab 1 page" />
-        {(token?<IonButton color="primary" onClick={onClick}>Primary</IonButton>:'')}
+        <IonButton color="primary" onClick={onClick}>Primary</IonButton>
         <IonInput value={target} onIonChange={e => setTarget(e.detail.value!)}/>
       </IonContent>
     </IonPage>
